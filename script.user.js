@@ -572,7 +572,7 @@
                     return;
                 }
                 formData.port = selectedPorts;
-                formData.portNames = Array.from(portSelect.selectedOptions).map(option => option.textContent);
+                formData.agent_id = type;
                 const cooperationValue = cooperationSelect.value;
                 const cooperationDisplay = cooperationOptions.find(option => option.value === cooperationValue).name;
                 formData.cooperation = cooperationValue;
@@ -592,7 +592,7 @@
                 if (selectedPorts.length > 1) {
                     portDisplay = '多端口';
                 } else {
-                    portDisplay = portOptions.find(option => option.value === selectedPorts[0]).name;
+                    portDisplay = portOptions.find(option => option.value === selectedPorts[0]).value;
                 }
                 if (type === 1) {
                     const nonEmptyValues = [formData.nickname, formData.product, portDisplay, createDate, cooperationDisplay, formData.custom].filter(value => value);
@@ -707,7 +707,7 @@
                     alert('请选择应用端口');
                     return;
                 }
-                const portDisplay = selectedPorts.length > 1? '多端口' : portOptions.find(option => option.value === selectedPorts[0]).name;
+                const portDisplay = selectedPorts.length > 1? '多端口' : portOptions.find(option => option.value === selectedPorts[0]).value;
                 const cooperationValue = cooperationSelect.value;
                 const cooperationDisplay = cooperationOptions.find(option => option.value === cooperationValue).name;
                 const custom = customInput.value;
