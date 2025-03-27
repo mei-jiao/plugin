@@ -8,6 +8,9 @@
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
 // @connect      *
+// @updateURL    https://raw.githubusercontent.com/mei-jiao/plugin/main/script.user.js
+// @downloadURL  https://raw.githubusercontent.com/mei-jiao/plugin/main/script.user.js
+
 // ==/UserScript==
 
 (function () {
