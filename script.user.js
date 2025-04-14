@@ -379,7 +379,7 @@
             const productInput = document.createElement('input');
             productInput.placeholder = '输入产品名称';
             //使用 title 和 input 一起做 class 标记
-            productInput.classList.add('form-item-' + '产品名称');
+            productInput.classList.add('form-item-产品名称');
             formContainer.appendChild(productLabel);
             formContainer.appendChild(productInput);
 
@@ -389,7 +389,7 @@
             const developerInput = document.createElement('input');
             developerInput.placeholder = '输入开发者名称';
             //使用 title 和 input 一起做 class 标记
-            developerInput.classList.add('form-item-' + '开发者名称');
+            developerInput.classList.add('form-item-开发者名称');
             formContainer.appendChild(developerLabel);
             formContainer.appendChild(developerInput);
 
@@ -400,6 +400,10 @@
             requiredSymbol3.classList.add('FormItem_requiredSymbol__1xv4T');
             requiredSymbol3.textContent = '*';
             portLabel.appendChild(requiredSymbol3);
+            const portTips = document.createElement('span');
+            portTips.classList.add('tips');
+            portTips.textContent = '(按住 Ctrl 键（macOS 系统中是 Command 键）后可点击选择多个)';
+            portLabel.appendChild(portTips);
             const portSelect = document.createElement('select');
             portSelect.multiple = true;
             const portOptions = [
@@ -416,7 +420,7 @@
                 portSelect.appendChild(opt);
             });
             //使用 title 和 select 一起做 class 标记
-            portSelect.classList.add('form-item-' + '应用端口');
+            portSelect.classList.add('form-item-应用端口');
             formContainer.appendChild(portLabel);
             formContainer.appendChild(portSelect);
 
@@ -446,7 +450,7 @@
                 cooperationSelect.appendChild(opt);
             });
             //使用 title 和 select 一起做 class 标记
-            cooperationSelect.classList.add('form-item-' + '合作模式');
+            cooperationSelect.classList.add('form-item-合作模式');
             formContainer.appendChild(cooperationLabel);
             formContainer.appendChild(cooperationSelect);
 
@@ -456,7 +460,7 @@
             const customInput = document.createElement('input');
             customInput.placeholder = '自定义内容';
             //使用 title 和 input 一起做 class 标记
-            customInput.classList.add('form-item-' + '自定义内容');
+            customInput.classList.add('form-item-自定义内容');
             formContainer.appendChild(customLabel);
             formContainer.appendChild(customInput);
 
@@ -537,8 +541,14 @@
                 } else {
                     formData.customer_id = customerSelect.value; // 添加 customer_id
                 }
+               
+
                 const now = new Date();
-                const createDate = now.getFullYear() + '' + (now.getMonth() + 1) + '' + now.getDate();
+                const year = now.getFullYear();
+                const month = padZero(now.getMonth() + 1);
+                const day = padZero(now.getDate());
+                const createDate = year + month + day;
+                console.log("createDate"+createDate);
                 formData.createDate = createDate;
 
                 let separator;
@@ -712,7 +722,10 @@
                 const cooperationDisplay = cooperationOptions.find(option => option.value === cooperationValue).name;
                 const custom = customInput.value;
                 const now = new Date();
-                const createDate = now.getFullYear() + '' + (now.getMonth() + 1) + '' + now.getDate();
+                const year = now.getFullYear();
+                const month = padZero(now.getMonth() + 1);
+                const day = padZero(now.getDate());
+                const createDate = year + month + day;
 
                 let separator;
                 if (type === 1) {
@@ -870,6 +883,9 @@
         });
         return input;
     }
+     function padZero(num) {
+         return num.toString().padStart(2, '0');
+     }
 
     // 页面加载完成后检查一次
     window.addEventListener('load', checkAndInsert);
