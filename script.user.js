@@ -399,6 +399,9 @@
             const requiredSymbol3 = document.createElement('span');
             requiredSymbol3.classList.add('FormItem_requiredSymbol__1xv4T');
             requiredSymbol3.textContent = '*';
+            const portTips = document.createElement('span');
+            portTips.classList.add('tips');
+            portTips.textContent = '(按住 Ctrl 键（macOS 系统中是 Command 键）后可点击选择多个)';
             portLabel.appendChild(portTips);
             const portSelect = document.createElement('select');
             portSelect.multiple = true;
