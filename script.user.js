@@ -399,10 +399,6 @@
             const requiredSymbol3 = document.createElement('span');
             requiredSymbol3.classList.add('FormItem_requiredSymbol__1xv4T');
             requiredSymbol3.textContent = '*';
-            portLabel.appendChild(requiredSymbol3);
-            const portTips = document.createElement('span');
-            portTips.classList.add('tips');
-            portTips.textContent = '(按住 Ctrl 键（macOS 系统中是 Command 键）后可点击选择多个)';
             portLabel.appendChild(portTips);
             const portSelect = document.createElement('select');
             portSelect.multiple = true;
@@ -472,7 +468,7 @@
 
             // 创建提交 div
             const submitDiv = document.createElement('div');
-            submitDiv.textContent = '提交';
+            submitDiv.textContent = '提交①';
             submitDiv.classList.add('button-like');
             formContainer.appendChild(submitDiv);
 
@@ -482,7 +478,7 @@
 
             // 创建确认 div
             const confirmDiv = document.createElement('div');
-            confirmDiv.textContent = '确认';
+            confirmDiv.textContent = '确认②';
             confirmDiv.classList.add('button-like', 'div-confirm-button');
 
             // 创建一个包含表单和结果展示容器的总容器
@@ -516,7 +512,7 @@
 
             // 添加保存 div
             const saveDiv = document.createElement('div');
-            saveDiv.textContent = '开户信息保存';
+            saveDiv.textContent = '开户信息保存③';
             saveDiv.classList.add('button-like', 'div-save-button');
             saveDiv.addEventListener('click', function () {
                 console.log('点击save');
