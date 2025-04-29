@@ -386,6 +386,10 @@
             //创建开发者名称 input 框
             const developerLabel = document.createElement('label');
             developerLabel.textContent = '输入开发者名称';
+            const requiredSymboldeveloper = document.createElement('span');
+            requiredSymboldeveloper.classList.add('FormItem_requiredSymbol__1xv4T');
+            requiredSymboldeveloper.textContent = '*';
+            developerLabel.appendChild(requiredSymboldeveloper);
             const developerInput = document.createElement('input');
             developerInput.placeholder = '输入开发者名称';
             //使用 title 和 input 一起做 class 标记
@@ -399,6 +403,7 @@
             const requiredSymbol3 = document.createElement('span');
             requiredSymbol3.classList.add('FormItem_requiredSymbol__1xv4T');
             requiredSymbol3.textContent = '*';
+            portLabel.appendChild(requiredSymbol3);
             const portTips = document.createElement('span');
             portTips.classList.add('tips');
             portTips.textContent = '(按住 Ctrl 键（macOS 系统中是 Command 键）后可点击选择多个)';
@@ -573,6 +578,17 @@
                         formData[setting.title] = element.value;
                     }
                 }
+                if(productInput.value == ''){
+                 // 未输入产品名称时，提示用户
+                    alert('请输入产品名称');
+                    return;
+                }
+                if(developerInput.value == ''){
+                    // 未输入开发者名称时，提示用户
+                    alert('请输入开发者名称');
+                    return;
+                }
+
 
                 formData.developer = developerInput.value;
                 const selectedPorts = Array.from(portSelect.selectedOptions).map(option => option.value);
@@ -589,11 +605,7 @@
                 formData.product = productInput.value;
                 formData.nickname = nicknameInput.value;
 
-                if (formData.product === '') {
-                    // 未输入产品名称时，提示用户
-                    alert('请输入产品名称');
-                    return;
-                }
+              
 
 
                 let finalStr;
@@ -704,6 +716,22 @@
                     }
                 }
                 const nickname = nicknameInput.value;
+                if (nickname == '') {
+                    // 未输入产品名称时，提示用户
+                    alert('请输入客户昵称');
+                    return;
+                }
+
+                // 根据 formSettings 收集表单元素的值
+                for (const setting of formSettings) {
+                    const element = formContainer.querySelector('.form-item-' + setting.title);
+                    if (element) {
+                        if (element.value === '') {
+                            alert(`请输入 ${setting.name}`);
+                            return;
+                        }
+                    }
+                }
                 const product = productInput.value;
                 if (product === '') {
                     // 未输入产品名称时，提示用户
@@ -711,6 +739,12 @@
                     return;
                 }
                 const developer = developerInput.value;
+                if (developer === '') {
+                    // 未输入开发者名称时，提示用户
+                    alert('请输入开发者名称');
+                    return;
+                }
+
                 const selectedPorts = Array.from(portSelect.selectedOptions).map(option => option.value);
                 if (selectedPorts.length === 0) {
                     alert('请选择应用端口');
